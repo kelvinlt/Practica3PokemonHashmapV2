@@ -17,7 +17,7 @@ public class PokemonFuego extends Pokemon{
 
     @Override
     public String toString() {
-        return "PokemonFuego{" + ", nombre=" + getNombre()+ ", atk=" + getAtk() + ", def=" + getDef() + ", hp=" + getHp()+ '}';
+        return "PokemonFuego{" + "nombre=" + getNombre()+ ", atk=" + getAtk() + ", def=" + getDef() + ", hp=" + getHp()+ '}';
     }  
     
     
