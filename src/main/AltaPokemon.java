@@ -68,7 +68,7 @@ public class AltaPokemon extends javax.swing.JFrame {
 
         jLabel8.setText("Habitat:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Agua Salada", "Agua Dulce" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agua Salada", "Agua Dulce" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
