@@ -6,7 +6,7 @@ import java.util.Map;
 import obj.Pokemon;
 
 public class Principal extends javax.swing.JFrame {
-    HashMap<Pokemon, String> todosPokemonMap = new HashMap<>();
+    
     
     
     public Principal() {

@@ -1,7 +1,12 @@
 package main;
 
+import obj.PokemonAgua;
+import static main.PracticaPokemonHashmap.todosPokemonMap;
+import obj.PokemonFuego;
+import obj.PokemonPlanta;
 
 public class AltaPokemon extends javax.swing.JFrame {
+
     static String tipoPokemon = "";
 
     public AltaPokemon(java.awt.Frame parent, boolean modal) {
@@ -194,9 +199,22 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //Boton donde inserta todos los datos al HashMap de pokemon
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if (tipoPokemon.equals(" ")) {
+        } else {
+            if (tipoPokemon.equals("agua")) {
+                insertarPokeAgua();
+            }
+            if(tipoPokemon.equals("fuego")){
+                insertarFuego();
+            }
+            if(tipoPokemon.equals("planta")){
+                insertarPlanta();
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Boton para salir del frame actual y volver al menu principal
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -206,32 +224,71 @@ public class AltaPokemon extends javax.swing.JFrame {
         cambiarTipo(tipoPokemon);
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
-    
+    //insertar pokemonAgua en HashMap de Pokemon
+    public void insertarPokeAgua() {
+        double atk = (Double) jSpinner1.getValue();
+        double def = (Double) jSpinner2.getValue();
+        double hp = (Double) jSpinner3.getValue();
+        String nombre = jTextField1.getText();
+        String tAgua = jComboBox3.getSelectedItem().toString();
+
+        PokemonAgua n = new PokemonAgua(tAgua, nombre, atk, def, hp);
+        todosPokemonMap.put(n.getNombre(), n);
+        System.out.println(n);
+        System.out.println(todosPokemonMap);
+    }
+
+    //insertar pokemonFuego en HashMap de Pokemon
+    public void insertarFuego() {
+        double atk = (Double) jSpinner1.getValue();
+        double def = (Double) jSpinner2.getValue();
+        double hp = (Double) jSpinner3.getValue();
+        String nombre = jTextField1.getText();
+
+        PokemonFuego n = new PokemonFuego(nombre, atk, def, hp);
+        todosPokemonMap.put(n.getNombre(), n);
+        System.out.println(n);
+        System.out.println(todosPokemonMap);
+    }
+
+    //insertar pokemonPlanta en HashMap de Pokemon
+    public void insertarPlanta() {
+        double atk = (Double) jSpinner1.getValue();
+        double def = (Double) jSpinner2.getValue();
+        double hp = (Double) jSpinner3.getValue();
+        String nombre = jTextField1.getText();
+        String habitat = jTextField5.getText();
+
+        PokemonPlanta n = new PokemonPlanta(habitat, nombre, atk, def, hp);
+        todosPokemonMap.put(n.getNombre(), n);
+        System.out.println(n);
+        System.out.println(todosPokemonMap);
+    }
+
     //Metodo para quitar poder usar los botones
-    public void disableAll(){
+    public void disableAll() {
         jComboBox3.setEnabled(false);
-        jTextField5.setEditable(false); 
+        jTextField5.setEditable(false);
     }
-    
+
     //Metodo para cambiar campos habilitados
-    public void cambiarTipo(String tipo){
+    public void cambiarTipo(String tipo) {
         disableAll();
-        if(!(tipo.equals(""))){
-            if(tipo.equals("agua")){
-            jComboBox3.setEnabled(true);
+        if (!(tipo.equals(""))) {
+            if (tipo.equals("agua")) {
+                jComboBox3.setEnabled(true);
             }
-            if(tipo.equals("planta")){
-            jTextField5.setEditable(true); 
+            if (tipo.equals("planta")) {
+                jTextField5.setEditable(true);
             }
-            if(tipo.equals("fuego")){
-            disableAll();
+            if (tipo.equals("fuego")) {
+                disableAll();
             }
-        }
-        else{
+        } else {
             disableAll();
         }
     }
-    
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

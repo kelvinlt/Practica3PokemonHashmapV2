@@ -14,4 +14,11 @@ public class PokemonFuego extends Pokemon{
     public PokemonFuego(String nombre, double atk, double def, double hp) {
         super(nombre, atk, def, hp);
     }
+
+    @Override
+    public String toString() {
+        return "PokemonFuego{" + ", nombre=" + getNombre()+ ", atk=" + getAtk() + ", def=" + getDef() + ", hp=" + getHp()+ '}';
+    }  
+    
+    
 }

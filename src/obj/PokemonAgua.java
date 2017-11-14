@@ -23,5 +23,10 @@ public class PokemonAgua extends Pokemon{
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }  
+    }
+
+    @Override
+    public String toString() {
+        return "PokemonAgua{" + "tipo=" + tipo + ", nombre=" + getNombre()+ ", atk=" + getAtk() + ", def=" + getDef() + ", hp=" + getHp()+ '}';
+    }    
 }

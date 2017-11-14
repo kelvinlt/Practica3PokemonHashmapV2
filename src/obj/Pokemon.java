@@ -45,7 +45,9 @@ public abstract class Pokemon {
     public void setHp(double hp) {
         this.hp = hp;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Pokemon{" + "nombre=" + nombre + ", atk=" + atk + ", def=" + def + ", hp=" + hp + '}';
+    }   
 }

@@ -1,5 +1,8 @@
 package main;
 
+import java.util.HashMap;
+import obj.Pokemon;
+
 public class PracticaPokemonHashmap {
 
     public static void main(String[] args) {
@@ -8,5 +11,5 @@ public class PracticaPokemonHashmap {
         principal.setVisible(true);
         
     }
-    
+    public static HashMap<String, Pokemon> todosPokemonMap = new HashMap<String,Pokemon>();
 }

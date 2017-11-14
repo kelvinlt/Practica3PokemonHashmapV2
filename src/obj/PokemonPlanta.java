@@ -23,5 +23,10 @@ public class PokemonPlanta extends Pokemon{
 
     public void setHabitat(String habitat) {
         this.habitat = habitat;
-    } 
+    }
+    
+        @Override
+    public String toString() {
+        return "PokemonPlanta{" + "habitat=" + habitat + ", nombre=" + getNombre()+ ", atk=" + getAtk() + ", def=" + getDef() + ", hp=" + getHp()+ '}';
+    }  
 }
