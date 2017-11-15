@@ -1,4 +1,3 @@
-
 package main;
 
 import java.util.ArrayList;
@@ -7,6 +6,7 @@ import static main.PracticaPokemonHashmap.todosPokemonMap;
 import obj.Pokemon;
 
 public class ModificarPokemon extends javax.swing.JFrame {
+
     static ArrayList<String> listaNombres = new ArrayList<>();
     Pokemon sel;
 
@@ -189,59 +189,64 @@ public class ModificarPokemon extends javax.swing.JFrame {
 
     //Al iniciar la ventana de modificarPokemon cargara todos los nombres del 
     //HashMap y en los metera en el ComboBox de Nombres.
-    public void insertNombres(){
+    public void insertNombres() {
         listaNombres.clear();
-        for(String o : todosPokemonMap.keySet()){
+        for (String o : todosPokemonMap.keySet()) {
             String s = todosPokemonMap.get(o).getNombre();
             listaNombres.add(s);
         }
         System.out.println(listaNombres);
         jComboBox1.setModel(new DefaultComboBoxModel(listaNombres.toArray()));
-        
-        
+
     }
-   
+
     //Metodo para que coja el nombre del combobox y busque en el hashmap un nombre igual y saque todos los valores para editar
-    public void getBusqueda(){
-        String tempSelected = jComboBox1.getSelectedItem().toString();
-        for(Pokemon o : todosPokemonMap.values()){
-            if(tempSelected.equals(todosPokemonMap.get(o.getNombre()).getNombre())){
-                sel=o;
-                jSpinner1.setValue(sel.getAtk());
-                jSpinner2.setValue(sel.getDef());
-                jSpinner3.setValue(sel.getHp()); 
-                
-            }
-            else{
-            
+    public void getBusqueda() {
+        if (jComboBox1.getItemCount() == 0) {
+        } 
+        else {
+            String tempSelected = jComboBox1.getSelectedItem().toString();
+            for (Pokemon o : todosPokemonMap.values()) {
+                if (tempSelected.equals(todosPokemonMap.get(o.getNombre()).getNombre())) {
+                    sel = o;
+                    jSpinner1.setValue(sel.getAtk());
+                    jSpinner2.setValue(sel.getDef());
+                    jSpinner3.setValue(sel.getHp());
+
+                } else {
+                }
             }
         }
-        
+
     }
-    
+
     //Metodo para insertar cambios de los atributos al pokemon con nombre seleccionado
-    public void setValuesPokemon(){
-        String tempSelected = jComboBox1.getSelectedItem().toString();
-        for(String o : todosPokemonMap.keySet()){
-            if(tempSelected.equals(todosPokemonMap.get(o).getNombre())){
-                double pAtk =(Double) jSpinner1.getValue();
-                double pDef =(Double) jSpinner2.getValue();
-                double pHp = (Double) jSpinner3.getValue();
-                
-                sel.setAtk(pAtk);
-                sel.setDef(pDef);
-                sel.setHp(pHp);
-                
-                todosPokemonMap.put(o, sel);
-                System.out.println(todosPokemonMap);
-                
-            }
-            else{
-            
+    public void setValuesPokemon() {
+        if (jComboBox1.getItemCount() == 0) {
+
+        } else {
+            String tempSelected = jComboBox1.getSelectedItem().toString();
+            for (String o : todosPokemonMap.keySet()) {
+                if (tempSelected.equals(todosPokemonMap.get(o).getNombre())) {
+                    double pAtk = (Double) jSpinner1.getValue();
+                    double pDef = (Double) jSpinner2.getValue();
+                    double pHp = (Double) jSpinner3.getValue();
+
+                    sel.setAtk(pAtk);
+                    sel.setDef(pDef);
+                    sel.setHp(pHp);
+
+                    todosPokemonMap.put(o, sel);
+                    System.out.println(todosPokemonMap);
+
+                } else {
+
+                }
             }
         }
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
