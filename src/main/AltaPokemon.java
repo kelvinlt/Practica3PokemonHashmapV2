@@ -95,11 +95,11 @@ public class AltaPokemon extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(20, 20, 100, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,9 +226,9 @@ public class AltaPokemon extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
     //insertar pokemonAgua en HashMap de Pokemon
     public void insertarPokeAgua() {
-        double atk = (Double) jSpinner1.getValue();
-        double def = (Double) jSpinner2.getValue();
-        double hp = (Double) jSpinner3.getValue();
+        int atk = (int) jSpinner1.getValue();
+        int def = (int) jSpinner2.getValue();
+        int hp = (int) jSpinner3.getValue();
         String nombre = jTextField1.getText();
         String tAgua = jComboBox3.getSelectedItem().toString();
 
@@ -240,9 +240,9 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //insertar pokemonFuego en HashMap de Pokemon
     public void insertarFuego() {
-        double atk = (Double) jSpinner1.getValue();
-        double def = (Double) jSpinner2.getValue();
-        double hp = (Double) jSpinner3.getValue();
+        int atk = (int) jSpinner1.getValue();
+        int def = (int) jSpinner2.getValue();
+        int hp = (int) jSpinner3.getValue();
         String nombre = jTextField1.getText();
 
         PokemonFuego n = new PokemonFuego(nombre, atk, def, hp);
@@ -253,9 +253,9 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //insertar pokemonPlanta en HashMap de Pokemon
     public void insertarPlanta() {
-        double atk = (Double) jSpinner1.getValue();
-        double def = (Double) jSpinner2.getValue();
-        double hp = (Double) jSpinner3.getValue();
+        int atk = (int) jSpinner1.getValue();
+        int def = (int) jSpinner2.getValue();
+        int hp = (int) jSpinner3.getValue();
         String nombre = jTextField1.getText();
         String habitat = jTextField5.getText();
 

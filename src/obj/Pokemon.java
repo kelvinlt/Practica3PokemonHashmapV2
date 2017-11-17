@@ -1,13 +1,13 @@
 
 package obj;
 
-public abstract class Pokemon {
+public abstract class Pokemon implements Catchable{
     private String nombre;
-    private double atk;
-    private double def;
-    private double hp;
+    private int atk;
+    private int def;
+    private int hp;
 
-    public Pokemon(String nombre, double atk, double def, double hp) {
+    public Pokemon(String nombre, int atk, int def, int hp) {
         this.nombre = nombre;
         this.atk = atk;
         this.def = def;
@@ -22,29 +22,31 @@ public abstract class Pokemon {
         this.nombre = nombre;
     }
 
-    public double getAtk() {
+    public int getAtk() {
         return atk;
     }
 
-    public void setAtk(double atk) {
+    public void setAtk(int atk) {
         this.atk = atk;
     }
 
-    public double getDef() {
+    public int getDef() {
         return def;
     }
 
-    public void setDef(double def) {
+    public void setDef(int def) {
         this.def = def;
     }
 
-    public double getHp() {
+    public int getHp() {
         return hp;
     }
 
-    public void setHp(double hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
+
+    
 
     @Override
     public String toString() {

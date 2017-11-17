@@ -227,21 +227,21 @@
     <Component class="javax.swing.JSpinner" name="jSpinner1">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+          <SpinnerModel initial="0" maximum="50" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner2">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+          <SpinnerModel initial="0" maximum="50" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner3">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+          <SpinnerModel initial="20" maximum="100" minimum="20" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
       </Properties>
     </Component>

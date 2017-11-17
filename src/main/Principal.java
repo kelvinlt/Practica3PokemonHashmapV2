@@ -41,6 +41,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Ver Pokemon");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Capturar Pokemon");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +108,12 @@ public class Principal extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        VerPokemon ventana = new VerPokemon(this, true);
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
         try {

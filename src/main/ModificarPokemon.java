@@ -64,11 +64,11 @@ public class ModificarPokemon extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(20, 20, 100, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,7 +94,7 @@ public class ModificarPokemon extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))))
             .addGroup(layout.createSequentialGroup()
@@ -228,9 +228,9 @@ public class ModificarPokemon extends javax.swing.JFrame {
             String tempSelected = jComboBox1.getSelectedItem().toString();
             for (String o : todosPokemonMap.keySet()) {
                 if (tempSelected.equals(todosPokemonMap.get(o).getNombre())) {
-                    double pAtk = (Double) jSpinner1.getValue();
-                    double pDef = (Double) jSpinner2.getValue();
-                    double pHp = (Double) jSpinner3.getValue();
+                    int pAtk = (int) jSpinner1.getValue();
+                    int pDef = (int) jSpinner2.getValue();
+                    int pHp = (int) jSpinner3.getValue();
 
                     sel.setAtk(pAtk);
                     sel.setDef(pDef);
