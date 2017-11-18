@@ -49,7 +49,7 @@ public class VerPokemon extends javax.swing.JFrame {
 
         jLabel1.setText("Ver Pokemon");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Agua", "Fuego", "Planta" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Agua", "Fuego", "Planta" }));
 
         jLabel2.setText("Buscar por tipo:");
 
@@ -88,24 +88,29 @@ public class VerPokemon extends javax.swing.JFrame {
 
         jLabel9.setText("Tipo de Agua:");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField2");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
 
-        jTextField6.setText("jTextField6");
-
-        jTextField7.setText("jTextField7");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,32 +144,28 @@ public class VerPokemon extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(98, 98, 98)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(41, 41, 41)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField5))
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,10 +225,9 @@ public class VerPokemon extends javax.swing.JFrame {
             case "Planta":
                 getAllPlant();
                 break;
-
         }
 
-
+        checkPosicion(actual);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -247,10 +247,22 @@ public class VerPokemon extends javax.swing.JFrame {
         checkPosicion(actual);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     public void getAllPokemon() {
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             searchPokemon.add(entry.getValue());
-
+            insertarBusqueda(actual);
         }
     }
 
@@ -258,6 +270,7 @@ public class VerPokemon extends javax.swing.JFrame {
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonAgua) {
                 searchPokemon.add(entry.getValue());
+                insertarBusqueda(actual);
             } else {
             }
         }
@@ -267,6 +280,7 @@ public class VerPokemon extends javax.swing.JFrame {
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonFuego) {
                 searchPokemon.add(entry.getValue());
+                insertarBusqueda(actual);
             } else {
             }
         }
@@ -276,11 +290,13 @@ public class VerPokemon extends javax.swing.JFrame {
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonPlanta) {
                 searchPokemon.add(entry.getValue());
+                insertarBusqueda(actual);
             } else {
             }
         }
     }
 
+    //comprubea la posicion actual
     public void checkPosicion(int actual) {
         if (actual == 0) {
             jButton2.setEnabled(false);
@@ -294,9 +310,19 @@ public class VerPokemon extends javax.swing.JFrame {
         }
     }
 
+    //añade a los todos los campos los parametros que tenga el pokemon
     public void insertarBusqueda(int actual) {
         jTextField1.setText(searchPokemon.get(actual).getNombre());
-        jTextField2.setText(jComboBox1.getSelectedItem().toString());
+        if (searchPokemon.get(actual) instanceof PokemonAgua) {
+            jTextField2.setText("Agua");
+        }
+        if (searchPokemon.get(actual) instanceof PokemonPlanta) {
+            jTextField2.setText("Planta");
+        }
+        if (searchPokemon.get(actual) instanceof PokemonFuego) {
+            jTextField2.setText("Fuego");
+        }
+
         jTextField3.setText(Integer.toString(searchPokemon.get(actual).getAtk()));
         jTextField4.setText(Integer.toString(searchPokemon.get(actual).getDef()));
         jTextField5.setText(Integer.toString(searchPokemon.get(actual).getHp()));
