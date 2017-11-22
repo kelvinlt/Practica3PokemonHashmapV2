@@ -1,12 +1,22 @@
 
 package main;
 
+import java.util.Map;
 import obj.Pokemon;
 import static main.PracticaPokemonHashmap.todosPokemonMap;
+import obj.PokemonAgua;
+import obj.PokemonFuego;
+import obj.PokemonPlanta;
 public class TotalPokemon extends javax.swing.JFrame {
+    static int allPoke=0;
+    static int allPlanta=0;
+    static int allAgua=0;
+    static int allFuego=0;
 
-    public TotalPokemon() {
+    public TotalPokemon(java.awt.Frame parent, boolean modal) {
         initComponents();
+        getAllNumbers();
+        inputAllData();
     }
 
     @SuppressWarnings("unchecked")
@@ -22,6 +32,7 @@ public class TotalPokemon extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +55,13 @@ public class TotalPokemon extends javax.swing.JFrame {
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Return");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -74,6 +92,9 @@ public class TotalPokemon extends javax.swing.JFrame {
                                     .addComponent(jTextField2)
                                     .addComponent(jTextField1))))))
                 .addContainerGap(202, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +117,9 @@ public class TotalPokemon extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -109,6 +132,10 @@ public class TotalPokemon extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,19 +167,44 @@ public class TotalPokemon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TotalPokemon().setVisible(true);
+                TotalPokemon dialog = new TotalPokemon(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
-    
-    public void getAll(){
-        for (Pokemon a : todosPokemonMap.values()) {
-
+    //Con 4 variables numericas cuenta los pokemons de cada tipo y el de todos.
+    public void getAllNumbers(){
+        for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             
+                allPoke++;
+            if (entry.getValue() instanceof PokemonPlanta) {
+                allPlanta++;
+            }
+            if (entry.getValue() instanceof PokemonFuego) {
+                allFuego++;
+            }
+            if (entry.getValue() instanceof PokemonAgua) {
+                allAgua++;
+            }
         }
     }
+    
+    //Pone todos los numeros obtenidos a los jtextfield de cada tipo
+    public void inputAllData(){
+        jTextField1.setText(Integer.toString(allPoke));
+        jTextField2.setText(Integer.toString(allAgua));
+        jTextField3.setText(Integer.toString(allPlanta));
+        jTextField4.setText(Integer.toString(allFuego));
+    };
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
