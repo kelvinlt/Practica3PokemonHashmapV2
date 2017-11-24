@@ -1,5 +1,6 @@
 package main;
 
+import javax.swing.JOptionPane;
 import obj.PokemonAgua;
 import static main.PracticaPokemonHashmap.todosPokemonMap;
 import obj.PokemonFuego;
@@ -199,16 +200,21 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //Boton donde inserta todos los datos al HashMap de pokemon
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (tipoPokemon.equals(" ")) {
+        // 
+        if (tipoPokemon.equals("")) {
+            JOptionPane.showMessageDialog(null, "No puedes dejar el tipo de Pokemon en blanco.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             if (tipoPokemon.equals("agua")) {
                 insertarPokeAgua();
+                    JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Agua.", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
             if(tipoPokemon.equals("fuego")){
                 insertarFuego();
+                JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Fuego.", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
             if(tipoPokemon.equals("planta")){
                 insertarPlanta();
+                JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Planta.", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         }
 
@@ -231,7 +237,8 @@ public class AltaPokemon extends javax.swing.JFrame {
         int hp = (int) jSpinner3.getValue();
         String nombre = jTextField1.getText();
         String tAgua = jComboBox3.getSelectedItem().toString();
-
+        
+        
         PokemonAgua n = new PokemonAgua(tAgua, nombre, atk, def, hp);
         todosPokemonMap.put(n.getNombre(), n);
         System.out.println(n);
