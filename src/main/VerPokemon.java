@@ -14,10 +14,9 @@ public class VerPokemon extends javax.swing.JFrame {
     int actual = 0;
 
     public VerPokemon(java.awt.Frame parent, boolean modal) {
-        searchPokemon.clear();
+        limpiarLista();
         initComponents();
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
+        disableAllEnters(); 
     }
 
     @SuppressWarnings("unchecked")
@@ -280,6 +279,7 @@ public class VerPokemon extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public void getAllPokemon() {
+        limpiarLista();
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             searchPokemon.add(entry.getValue()); //añade al ArrayList la informacion encontrada
             insertarBusqueda(actual);//Como actual comienza en numero 0, al hacer la primera busqueda añadira el primer pokemon
@@ -287,6 +287,7 @@ public class VerPokemon extends javax.swing.JFrame {
     }
 
     public void getAllWater() {
+        limpiarLista();
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonAgua) {
                 searchPokemon.add(entry.getValue());
@@ -297,6 +298,7 @@ public class VerPokemon extends javax.swing.JFrame {
     }
 
     public void getAllFire() {
+        limpiarLista();
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonFuego) {
                 searchPokemon.add(entry.getValue());
@@ -307,6 +309,7 @@ public class VerPokemon extends javax.swing.JFrame {
     }
 
     public void getAllPlant() {
+        limpiarLista();
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
             if (entry.getValue() instanceof PokemonPlanta) {
                 searchPokemon.add(entry.getValue());
@@ -315,18 +318,38 @@ public class VerPokemon extends javax.swing.JFrame {
             }
         }
     }
+    
+    //limpia la arraylist y el contador de posicion actual para que errores no salgan
+    public void limpiarLista(){
+        searchPokemon.clear();
+        actual = 0;
+    }
+    
+    //deshabilita todos los botones y los text inputs no pueden ser rescritos ni se pueden escribir nada en ellos
+    public void disableAllEnters(){
+        jTextField1.setEditable(false);//deshabilita un jtextfield para que no se pueda editar
+        jTextField2.setEditable(false);
+        jTextField3.setEditable(false);
+        jTextField4.setEditable(false);
+        jTextField5.setEditable(false);
+        jTextField6.setEditable(false);
+        jTextField7.setEditable(false);
+        
+        jButton2.setEnabled(false);//deshabilita un boton para que no pueda ser clicado
+        jButton3.setEnabled(false);
+    }
 
     //comprubea la posicion actual
     public void checkPosicion(int actual) {
-        if (actual == 0) {
+        if (actual == 0) { //0 seria el comenzamiento, si el contador actual es igual a 0 este dehabilitara el boton de anterior
             jButton2.setEnabled(false);
         } else {
-            jButton2.setEnabled(true);
+            jButton2.setEnabled(true); //si no es asi lo habilita
         }
-        if (actual == (searchPokemon.size() - 1)) {
+        if (actual == (searchPokemon.size() - 1)) { //mira el tamaño del arraylist y el si el contador actual es igual que el tamaño deshabilita el boton siguiente
             jButton3.setEnabled(false);
         } else {
-            jButton3.setEnabled(true);
+            jButton3.setEnabled(true);//si no es asi lo habilita
         }
     }
 
