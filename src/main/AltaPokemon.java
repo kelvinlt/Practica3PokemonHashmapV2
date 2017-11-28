@@ -230,7 +230,7 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    //insertar pokemonAgua en HashMap de Pokemon
+    //metodo que recoge todos los datos necesarios de los parametros dados, comprobacion de que el nombre no este duplicado e insercion al hashmap con hashAgua()
     public void insertarPokeAgua() {
         int atk = (int) jSpinner1.getValue();//coge el numero de ataque del campo en el progama
         int def = (int) jSpinner2.getValue();//coge el numero de defensa del campo en el progama
@@ -239,37 +239,39 @@ public class AltaPokemon extends javax.swing.JFrame {
         String tAgua = jComboBox3.getSelectedItem().toString();//coge el tipo de agua del comboBox en el progama
 
         if (!nombre.isEmpty()) {//si el nombre no esta vacio    
-            if (todosPokemonMap.isEmpty()) {
+            if (todosPokemonMap.isEmpty()) {//si el hashmap esta vacio
                 hashAgua(atk, def, hp, nombre, tAgua);//metodo que introduce el pokemon con mensaje de success
-            } else {
-                if(todosPokemonMap.containsKey(nombre)){
-                    foundDuplicate();
+            } else {//si el hashmap no esta vacio
+                if(todosPokemonMap.containsKey(nombre)){//mirara el hashmap si hay algun nombre duplicado
+                    foundDuplicate();//si hay un nombre duplicado saldra un mensaje de error de nombre duplicado
                 }
-                else{
-                    hashAgua(atk, def, hp, nombre, tAgua);
+                else{//si no hay nombre duplicado
+                    hashAgua(atk, def, hp, nombre, tAgua);//llamara el metodo para introducir un pokemon de agua con sus atributos
                 }
             }
         } else {//si el nombre esta vacio
-            notInsertedNombre();
+            notInsertedNombre();//si no hay un nombre saldra un mensaje de error de nombre no introducido
         }
     }
-
+    //metodo de introduccion de pokemon agua al hashmap
     public void hashAgua(int atk, int def, int hp, String nombre, String tAgua) {
-        PokemonAgua n = new PokemonAgua(tAgua, nombre, atk, def, hp);
-        todosPokemonMap.put(n.getNombre(), n);
-        System.out.println(n);
-        System.out.println(todosPokemonMap);
-        JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Agua.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        PokemonAgua n = new PokemonAgua(tAgua, nombre, atk, def, hp);//coge todos los valores introducidos y crea un objeto PokemonAgua
+        todosPokemonMap.put(n.getNombre(), n);//introduce el pokemon creado anteriormente y lo introduce en el hashmap con una llave(nombre del pokemon) y un valor(pokemon)
+        System.out.println(n);//print para comprobar que el pokemon introducido
+        System.out.println(todosPokemonMap);//print para comprobar el hashmap despues de la introducion del pokemon
+        JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Agua.", "Success", JOptionPane.INFORMATION_MESSAGE);//salida del menssage que dice que se ha introducido correctamente
     }
 
-    //insertar pokemonFuego en HashMap de Pokemon
+    //metodo que recoge todos los datos necesarios de los parametros dados, comprobacion de que el nombre no este duplicado e insercion al hashmap con hashFuego()
+    //este insertar es similar al anterior menos el campo de tipo de agua
+    //este insertar es el mas simple y basico de los tres
     public void insertarFuego() {
         int atk = (int) jSpinner1.getValue();
         int def = (int) jSpinner2.getValue();
         int hp = (int) jSpinner3.getValue();
         String nombre = jTextField1.getText();
 
-        if (!nombre.isEmpty()) {//si el nombre no esta nulo  
+        if (!nombre.isEmpty()) {
             if (todosPokemonMap.isEmpty()) {
                 hashFuego(atk, def, hp, nombre);
             } else {
@@ -284,7 +286,8 @@ public class AltaPokemon extends javax.swing.JFrame {
             notInsertedNombre();
         }
     }
-
+    //metodo de introduccion de pokemon fuego al hashmap
+    //metodo similar a los otros dos(hashAgua, hashPlanta) y tambien el mas simple de los tres
     public void hashFuego(int atk, int def, int hp, String nombre) {
         PokemonFuego n = new PokemonFuego(nombre, atk, def, hp);
         todosPokemonMap.put(n.getNombre(), n);
@@ -293,7 +296,8 @@ public class AltaPokemon extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Fuego.", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    //insertar pokemonPlanta en HashMap de Pokemon
+    //metodo que recoge todos los datos necesarios de los parametros dados, comprobacion de que el nombre no este duplicado, que el campo de habitat no este vacio
+    //e insercion al hashmap con hashPlanta()
     public void insertarPlanta() {
         int atk = (int) jSpinner1.getValue();//coge el numero de ataque del campo en el progama
         int def = (int) jSpinner2.getValue();//coge el numero de defensa del campo en el progama
@@ -318,7 +322,7 @@ public class AltaPokemon extends javax.swing.JFrame {
             notInsertedNombre();
         }
     }
-
+    //metodo de introduccion de pokemon planta al hashmap
     public void hashPlanta(int atk, int def, int hp, String nombre, String habitat) {
         PokemonPlanta n = new PokemonPlanta(habitat, nombre, atk, def, hp);
         todosPokemonMap.put(n.getNombre(), n);
@@ -326,19 +330,18 @@ public class AltaPokemon extends javax.swing.JFrame {
         System.out.println(todosPokemonMap);
         JOptionPane.showMessageDialog(null, "Se ha insertado correctamente el Pokemon tipo Planta.", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+    //metodo de mensaje de error de nombre no introducido
     public void notInsertedNombre(){
         JOptionPane.showMessageDialog(null, "No se ha introducido un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
+    //metodo de mensaje de error de habitat no introducido
     public void notInsertedHabitat(){
         JOptionPane.showMessageDialog(null, "No se ha introducido un habitat.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
+    //metodo de mensaje de error de nombre duplicado encontrado
     public void foundDuplicate(){
         JOptionPane.showMessageDialog(null, "Ya hay un Pokemon con el mismo nombre.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
     
     //Metodo para quitar poder usar los botones
     public void disableAll() {
