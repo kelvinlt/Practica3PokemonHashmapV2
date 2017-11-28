@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import static main.PracticaPokemonHashmap.todosPokemonMap;
 import obj.Pokemon;
 import obj.PokemonAgua;
 import obj.PokemonFuego;
@@ -16,7 +18,7 @@ public class VerPokemon extends javax.swing.JFrame {
     public VerPokemon(java.awt.Frame parent, boolean modal) {
         limpiarLista();
         initComponents();
-        disableAllEnters(); 
+        disableAllEnters();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +51,7 @@ public class VerPokemon extends javax.swing.JFrame {
 
         jLabel1.setText("Ver Pokemon");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Agua", "Fuego", "Planta" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Pokemon", "Agua", "Fuego", "Planta" }));
 
         jLabel2.setText("Buscar por tipo:");
 
@@ -224,25 +226,29 @@ public class VerPokemon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //al apretar el botton de buscar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //recoge el valor en el comboBox seleccionado
         String tipoLista = jComboBox1.getSelectedItem().toString();
-
+        //dependiendo de valor recogido con el switch recogera datos del tipo de pokemon buscado
         switch (tipoLista) {
-            case " ":
-                getAllPokemon();
+            case "Todos Pokemon"://este caso, reocge todos los Pokemon en el array
+                clearText();
+                getAllPokemon();//llama al metodo especifico a el
                 break;
-            case "Agua":
-                getAllWater();
+            case "Agua"://este caso, reocge todos los PokemonAgua en el array
+                clearText();
+                getAllWater();//llama al metodo especifico a el
                 break;
-            case "Fuego":
-                getAllFire();
+            case "Fuego"://este caso, reocge todos los PokemonFuego en el array
+                clearText();
+                getAllFire();//llama al metodo especifico a el
                 break;
-            case "Planta":
-                getAllPlant();
+            case "Planta"://este caso, reocge todos los PokemonPlanta en el array
+                clearText();
+                getAllPlant();//llama al metodo especifico a el
                 break;
         }
-
-        checkPosicion(actual);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -280,53 +286,93 @@ public class VerPokemon extends javax.swing.JFrame {
 
     public void getAllPokemon() {
         limpiarLista();
-        for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
-            searchPokemon.add(entry.getValue()); //añade al ArrayList la informacion encontrada
-            insertarBusqueda(actual);//Como actual comienza en numero 0, al hacer la primera busqueda añadira el primer pokemon
+        if (todosPokemonMap.isEmpty()) {
+            emptyList();
+        } else {
+            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {
+                searchPokemon.add(entry.getValue()); //añade al ArrayList la informacion encontrada
+                insertarBusqueda(actual);//Como actual comienza en numero 0, al hacer la primera busqueda añadira el primer pokemon
+            }
+            checkPosicion(actual);
         }
     }
 
     public void getAllWater() {
         limpiarLista();
-        for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
-            if (entry.getValue() instanceof PokemonAgua) {
-                searchPokemon.add(entry.getValue());
-                insertarBusqueda(actual);
-            } else {
+        int contador=0;
+        if (todosPokemonMap.isEmpty()) {
+            emptyList();
+        } else {
+            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {
+                if (entry.getValue() instanceof PokemonAgua) {
+                    searchPokemon.add(entry.getValue());
+                    insertarBusqueda(actual);
+                    contador++;
+                }
+            }
+            if(contador==0){
+                emptyAgua();
+            }
+            else{
+                checkPosicion(actual);
             }
         }
     }
 
     public void getAllFire() {
         limpiarLista();
-        for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
-            if (entry.getValue() instanceof PokemonFuego) {
-                searchPokemon.add(entry.getValue());
-                insertarBusqueda(actual);
-            } else {
+        int contador=0;
+        if (todosPokemonMap.isEmpty()) {
+            emptyList();
+        } else {
+            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {
+                if (entry.getValue() instanceof PokemonFuego) {
+                    searchPokemon.add(entry.getValue());
+                    insertarBusqueda(actual);
+                    contador++;
+                }
+            }
+            if(contador==0){
+                emptyFuego();
+            }
+            else{
+                checkPosicion(actual);
             }
         }
     }
 
     public void getAllPlant() {
         limpiarLista();
-        for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
-            if (entry.getValue() instanceof PokemonPlanta) {
-                searchPokemon.add(entry.getValue());
-                insertarBusqueda(actual);
-            } else {
+        int contador=0;
+        if (todosPokemonMap.isEmpty()) {
+            emptyList();
+        } else {
+            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {
+                if (entry.getValue() instanceof PokemonPlanta) {
+                    searchPokemon.add(entry.getValue());
+                    insertarBusqueda(actual);
+                    contador++;
+                }
+            }
+            if(contador==0){
+                emptyPlanta();
+            }
+            else{
+                checkPosicion(actual);
             }
         }
     }
-    
+
     //limpia la arraylist y el contador de posicion actual para que errores no salgan
-    public void limpiarLista(){
+    public void limpiarLista() {
         searchPokemon.clear();
         actual = 0;
+        
+
     }
-    
+
     //deshabilita todos los botones y los text inputs no pueden ser rescritos ni se pueden escribir nada en ellos
-    public void disableAllEnters(){
+    public void disableAllEnters() {
         jTextField1.setEditable(false);//deshabilita un jtextfield para que no se pueda editar
         jTextField2.setEditable(false);
         jTextField3.setEditable(false);
@@ -334,7 +380,7 @@ public class VerPokemon extends javax.swing.JFrame {
         jTextField5.setEditable(false);
         jTextField6.setEditable(false);
         jTextField7.setEditable(false);
-        
+
         jButton2.setEnabled(false);//deshabilita un boton para que no pueda ser clicado
         jButton3.setEnabled(false);
     }
@@ -355,8 +401,7 @@ public class VerPokemon extends javax.swing.JFrame {
 
     //añade a los todos los campos los parametros que tenga el pokemon
     public void insertarBusqueda(int actual) {
-        
-        
+
         jTextField1.setText(searchPokemon.get(actual).getNombre());
         if (searchPokemon.get(actual) instanceof PokemonAgua) {
             jTextField2.setText("Agua");
@@ -382,6 +427,31 @@ public class VerPokemon extends javax.swing.JFrame {
             jTextField6.setText("");
         }
     }
+
+    public void emptyList() {
+        JOptionPane.showMessageDialog(null, "No hay Pokemon en la lista", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void emptyAgua() {
+        JOptionPane.showMessageDialog(null, "No hay PokemonAgua en la lista", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void emptyPlanta() {
+        JOptionPane.showMessageDialog(null, "No hay PokemonPlanta en la lista", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void emptyFuego() {
+        JOptionPane.showMessageDialog(null, "No hay PokemonFuego en la lista", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void clearText(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");}
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
