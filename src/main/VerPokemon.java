@@ -284,19 +284,22 @@ public class VerPokemon extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    public void getAllPokemon() {
-        limpiarLista();
-        if (todosPokemonMap.isEmpty()) {
-            emptyList();
-        } else {
-            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {
-                searchPokemon.add(entry.getValue()); //añade al ArrayList la informacion encontrada
+    //metodo que coge todos los Pokemon de la lista
+    public void getAllPokemon() { 
+        limpiarLista();//limpia la arrayList de este documento antes para que no hayan problemas
+        if (todosPokemonMap.isEmpty()) {//si el Hashmap de todosPokemon esta vacia
+            emptyList();//saldra un mensaje de error para indicar que no hay pokemon en el hashmap
+        } else {//si contiene algo
+            for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {//recorrera todo el hasmap
+                searchPokemon.add(entry.getValue()); //añadira al ArrayList la informacion encontrada
                 insertarBusqueda(actual);//Como actual comienza en numero 0, al hacer la primera busqueda añadira el primer pokemon
             }
-            checkPosicion(actual);
+            checkPosicion(actual);//con checkPosicion se comprueba si tiene anterior o siguiente
         }
     }
-
+    
+    //metodo que coge todos los PokemonAgua de la lista
+    //similar a getAllPokemon pero un poco mas complicado ya que añade otros valores
     public void getAllWater() {
         limpiarLista();
         int contador=0;
@@ -425,6 +428,11 @@ public class VerPokemon extends javax.swing.JFrame {
             PokemonAgua n = (PokemonAgua) searchPokemon.get(actual);
             jTextField7.setText(n.getTipo());
             jTextField6.setText("");
+        }
+        if (searchPokemon.get(actual) instanceof PokemonFuego) {
+            PokemonFuego n = (PokemonFuego) searchPokemon.get(actual);
+            jTextField6.setText("");
+            jTextField7.setText("");
         }
     }
 
