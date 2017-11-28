@@ -232,25 +232,23 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //insertar pokemonAgua en HashMap de Pokemon
     public void insertarPokeAgua() {
-        int atk = (int) jSpinner1.getValue();
-        int def = (int) jSpinner2.getValue();
-        int hp = (int) jSpinner3.getValue();
-        String nombre = jTextField1.getText();
-        String tAgua = jComboBox3.getSelectedItem().toString();
+        int atk = (int) jSpinner1.getValue();//coge el numero de ataque del campo en el progama
+        int def = (int) jSpinner2.getValue();//coge el numero de defensa del campo en el progama
+        int hp = (int) jSpinner3.getValue();//coge el numero de puntos de vida del campo en el progama
+        String nombre = jTextField1.getText();//coge el nombre del campo en el progama
+        String tAgua = jComboBox3.getSelectedItem().toString();//coge el tipo de agua del comboBox en el progama
 
         if (!nombre.isEmpty()) {//si el nombre no esta vacio    
             if (todosPokemonMap.isEmpty()) {
                 hashAgua(atk, def, hp, nombre, tAgua);//metodo que introduce el pokemon con mensaje de success
             } else {
-                for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {//recorrera todos los objetos en el hashmap comparando el nombre introducido y los que estan guardados
-                    if (entry.getValue().getNombre().equals(nombre)) {//si encuentra uno igual saldra un mensaje de error
-                        foundDuplicate();
-                    } else {//sino lo introducira en el hash
-                        hashAgua(atk, def, hp, nombre, tAgua);
-                    }
+                if(todosPokemonMap.containsKey(nombre)){
+                    foundDuplicate();
+                }
+                else{
+                    hashAgua(atk, def, hp, nombre, tAgua);
                 }
             }
-
         } else {//si el nombre esta vacio
             notInsertedNombre();
         }
@@ -275,12 +273,11 @@ public class AltaPokemon extends javax.swing.JFrame {
             if (todosPokemonMap.isEmpty()) {
                 hashFuego(atk, def, hp, nombre);
             } else {
-                for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {//recorrera todos los objetos en el hashmap comparando el nombre introducido y los que estan guardados
-                    if (entry.getValue().getNombre().equals(nombre)) {//si encuentra uno igual saldra un mensaje de error
-                        foundDuplicate();
-                    } else {//sino lo introducira en el hash
-                        hashFuego(atk, def, hp, nombre);
-                    }
+                if(todosPokemonMap.containsKey(nombre)){
+                foundDuplicate();
+                }
+                else{
+                    hashFuego(atk, def, hp, nombre);
                 }
             }
         } else {
@@ -298,22 +295,20 @@ public class AltaPokemon extends javax.swing.JFrame {
 
     //insertar pokemonPlanta en HashMap de Pokemon
     public void insertarPlanta() {
-        int atk = (int) jSpinner1.getValue();
-        int def = (int) jSpinner2.getValue();
-        int hp = (int) jSpinner3.getValue();
-        String nombre = jTextField1.getText();
-        String habitat = jTextField5.getText();
+        int atk = (int) jSpinner1.getValue();//coge el numero de ataque del campo en el progama
+        int def = (int) jSpinner2.getValue();//coge el numero de defensa del campo en el progama
+        int hp = (int) jSpinner3.getValue();//coge el numero de puntos de vida del campo en el progama
+        String nombre = jTextField1.getText();//coge el nombre del campo en el progama
+        String habitat = jTextField5.getText();//coge el habitat del campo en el progama
         if (!nombre.isEmpty()) {//si el campo nombre no esta vacio
             if (!habitat.isEmpty()) {//si el campo habitat no esta vacio
                 if (todosPokemonMap.isEmpty()) {//si el hashmap esta vacio
-                    hashPlanta(atk, def, hp, nombre, habitat);
+                    hashPlanta(atk, def, hp, nombre, habitat);//cogera
                 } else {//si el hasmap no esta vacio
-                    for (Map.Entry<String, Pokemon> entry : todosPokemonMap.entrySet()) {//recorrera todos los objetos en el hashmap comparando el nombre introducido y los que estan guardados
-                        if (entry.getValue().getNombre().equals(nombre)) {//si encuentra uno igual saldra un mensaje de error
-                            foundDuplicate();
-                        } else {
-                                hashPlanta(atk, def, hp, nombre, habitat);
-                        }
+                    if(todosPokemonMap.containsKey(nombre)){
+                        foundDuplicate();
+                    }else{
+                        hashPlanta(atk, def, hp, nombre, habitat);
                     }
                 }
             } else {
