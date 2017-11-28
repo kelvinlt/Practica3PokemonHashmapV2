@@ -17,8 +17,10 @@ public class TotalPokemon extends javax.swing.JFrame {
         initComponents();
         getAllNumbers();
         inputAllData();
+        disableAllEnters();
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,6 +136,7 @@ public class TotalPokemon extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        eraseAllDataOnExit();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -182,7 +185,6 @@ public class TotalPokemon extends javax.swing.JFrame {
     //Con 4 variables numericas cuenta los pokemons de cada tipo y el de todos.
     public void getAllNumbers(){
         for (Map.Entry<String, Pokemon> entry : PracticaPokemonHashmap.todosPokemonMap.entrySet()) {
-            
                 allPoke++;
             if (entry.getValue() instanceof PokemonPlanta) {
                 allPlanta++;
@@ -203,6 +205,22 @@ public class TotalPokemon extends javax.swing.JFrame {
         jTextField3.setText(Integer.toString(allPlanta));
         jTextField4.setText(Integer.toString(allFuego));
     };
+    
+    //deshabilita todos los botones y los text inputs no pueden ser rescritos ni se pueden escribir nada en ellos
+    public void disableAllEnters(){
+        jTextField1.setEditable(false);//deshabilita un jtextfield para que no se pueda editar
+        jTextField2.setEditable(false);
+        jTextField3.setEditable(false);
+        jTextField4.setEditable(false);
+    }
+    //metodo para dejar a 0 todos los valores
+    public void eraseAllDataOnExit(){
+        allPoke=0;
+        allPlanta=0;
+        allAgua=0;
+        allFuego=0;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
