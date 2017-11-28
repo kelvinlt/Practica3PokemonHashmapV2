@@ -17,7 +17,7 @@ public class AltaPokemon extends javax.swing.JFrame {
         disableAll();
 
     }
-
+//
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
